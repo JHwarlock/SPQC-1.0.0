@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>样本表达质量控制结果</title>
+
+<link href="../CSS/report.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<h1>样本表达质量控制结果</h1>
+<br />
+<h2>1. 样本信息列表</h2>
+<hr />
+<br />
+<p><table frame="hsides" border="1" cellpadding="2" cellspacing="0">
+<caption align="top">Table: samples data list</caption>
+<tr><th>#SN</th><th>Files</th><th>name</th><th>class_id</th><th>classname</th></tr>
+<tr><td><pre>S31612</pre></td><td><pre>31612RB_1.fq.gz,31612RB_2.fq.gz</pre></td><td><pre>S31612</pre></td><td><pre>1</pre></td><td><pre>control</pre></td></tr>
+<tr><td><pre>S29620</pre></td><td><pre>29620RB_1.fq.gz,29620RB_2.fq.gz</pre></td><td><pre>S29620</pre></td><td><pre>1</pre></td><td><pre>control</pre></td></tr>
+<tr><td><pre>S26146</pre></td><td><pre>26146RB_1.fq.gz,26146RB_2.fq.gz</pre></td><td><pre>S26146</pre></td><td><pre>1</pre></td><td><pre>control</pre></td></tr>
+<tr><td><pre>S30548</pre></td><td><pre>30548RB_1.fq.gz,30548RB_2.fq.gz</pre></td><td><pre>S30548</pre></td><td><pre>1</pre></td><td><pre>control</pre></td></tr>
+<tr><td><pre>S30956</pre></td><td><pre>30956RB_1.fq.gz,30956RB_2.fq.gz</pre></td><td><pre>S30956</pre></td><td><pre>1</pre></td><td><pre>control</pre></td></tr>
+<tr><td><pre>S31533</pre></td><td><pre>31533RB_1.fq.gz,31533RB_2.fq.gz</pre></td><td><pre>S31533</pre></td><td><pre>2</pre></td><td><pre>case</pre></td></tr>
+<tr><td><pre>S29615</pre></td><td><pre>29615RB_1.fq.gz,29615RB_2.fq.gz</pre></td><td><pre>S29615</pre></td><td><pre>2</pre></td><td><pre>case</pre></td></tr>
+<tr><td><pre>S31680</pre></td><td><pre>31680RB_1.fq.gz,31680RB_2.fq.gz</pre></td><td><pre>S31680</pre></td><td><pre>2</pre></td><td><pre>case</pre></td></tr>
+<tr><td><pre>S30686</pre></td><td><pre>30686RB_1.fq.gz,30686RB_2.fq.gz</pre></td><td><pre>S30686</pre></td><td><pre>2</pre></td><td><pre>case</pre></td></tr>
+<tr><td><pre>S30644</pre></td><td><pre>30644RB_1.fq.gz,30644RB_2.fq.gz</pre></td><td><pre>S30644</pre></td><td><pre>3</pre></td><td><pre>outline</pre></td></tr>
+</table>
+</p>
+<p><pre></pre></p>
+<br />
+<h2>2. 样本表达质量控制结果,数据可靠性分析</h2>
+<hr />
+<br />
+<h3>a. 样本表达水平概率密度分布</h3>
+<br />
+<p>对各样本表达水平，采用log<sub>2</sub>变换，并计算概率密度。查看各样本及各组间表达水平的分布情况。概率密度估计采用Kernel density estimation， implementation in python with scipy（http://www.scipy.org/）</p>
+<p><img src="./exprs_pdf.png" width="50%" /><a href="./exprs_pdf.svg">SVG矢量图版本</a></p>
+<br />
+<h3>b. 样本表达水平累积概率密度分布</h3>
+<br />
+<p>对各样本表达水平，采用log<sub>2</sub>变换，并计算累积概率密度。查看各样本及各组间表达水平的分布情况。</p>
+<p><img src="./exprs_CDF.png" width="50%" /><a href="./exprs_CDF.svg">SVG矢量图版本</a></p>
+<br />
+<h3>c. 样本表达水平箱式图</h3>
+<p>对各样本表达水平，采用log<sub>2</sub>变换，并绘制箱式图。查看各样本及各组间表达水平的分布情况。</p>
+<p><img src="./exprs_boxplot.png" width="50%" /><a href="./exprs_boxplot.svg">SVG矢量图版本</a></p>
+<br />
+<h3>d. 样本间表达相关性分析</h3>
+<br />
+<p>计算样本两两间的fisher 相关系数， 将相关系数矩阵按实验分组形式，绘制成热图。样本处理组间，大部分表达具有相关性，主要是因为维持生命基本活动的大部分基因均不差异表达，只有少部分为差异表达（当处理条件十分剧烈时，实验组和处理组间可能并不满足此假设，但组内样本应满足此假设）。因此，各样本间，表达水平相关性应较高。若图中存在特异性的样本，或实验条件不统一且未做校正时，该特殊样本与其他样本的表达相关性会非常低。</p>
+<p><img src="./corrarray.png" width="50%" /><a href="./corrarray.svg">SVG矢量图版本</a></p>
+<p><table frame="hsides" border="1" cellpadding="2" cellspacing="0">
+<caption align="top">Table:  correlation coefficient matrix for samples' expression level</caption>
+<tr><th>#correlation</th><th>S31612</th><th>S29620</th><th>S26146</th><th>S30548</th><th>S30956</th><th>S31533</th><th>S29615</th><th>S31680</th><th>S30686</th><th>S30644</th></tr>
+<tr><td><pre>S31612</pre></td><td><pre>1.000</pre></td><td><pre>0.210</pre></td><td><pre>0.007</pre></td><td><pre>0.931</pre></td><td><pre>0.882</pre></td><td><pre>0.881</pre></td><td><pre>0.090</pre></td><td><pre>0.790</pre></td><td><pre>0.949</pre></td><td><pre>0.849</pre></td></tr>
+<tr><td><pre>S29620</pre></td><td><pre>0.210</pre></td><td><pre>1.000</pre></td><td><pre>0.965</pre></td><td><pre>0.308</pre></td><td><pre>0.193</pre></td><td><pre>0.193</pre></td><td><pre>0.979</pre></td><td><pre>0.563</pre></td><td><pre>0.191</pre></td><td><pre>0.229</pre></td></tr>
+<tr><td><pre>S26146</pre></td><td><pre>0.007</pre></td><td><pre>0.965</pre></td><td><pre>1.000</pre></td><td><pre>0.085</pre></td><td><pre>0.008</pre></td><td><pre>0.008</pre></td><td><pre>0.996</pre></td><td><pre>0.374</pre></td><td><pre>0.006</pre></td><td><pre>0.009</pre></td></tr>
+<tr><td><pre>S30548</pre></td><td><pre>0.931</pre></td><td><pre>0.308</pre></td><td><pre>0.085</pre></td><td><pre>1.000</pre></td><td><pre>0.833</pre></td><td><pre>0.828</pre></td><td><pre>0.166</pre></td><td><pre>0.891</pre></td><td><pre>0.874</pre></td><td><pre>0.932</pre></td></tr>
+<tr><td><pre>S30956</pre></td><td><pre>0.882</pre></td><td><pre>0.193</pre></td><td><pre>0.008</pre></td><td><pre>0.833</pre></td><td><pre>1.000</pre></td><td><pre>0.989</pre></td><td><pre>0.094</pre></td><td><pre>0.794</pre></td><td><pre>0.832</pre></td><td><pre>0.832</pre></td></tr>
+<tr><td><pre>S31533</pre></td><td><pre>0.881</pre></td><td><pre>0.193</pre></td><td><pre>0.008</pre></td><td><pre>0.828</pre></td><td><pre>0.989</pre></td><td><pre>1.000</pre></td><td><pre>0.096</pre></td><td><pre>0.806</pre></td><td><pre>0.827</pre></td><td><pre>0.842</pre></td></tr>
+<tr><td><pre>S29615</pre></td><td><pre>0.090</pre></td><td><pre>0.979</pre></td><td><pre>0.996</pre></td><td><pre>0.166</pre></td><td><pre>0.094</pre></td><td><pre>0.096</pre></td><td><pre>1.000</pre></td><td><pre>0.451</pre></td><td><pre>0.084</pre></td><td><pre>0.092</pre></td></tr>
+<tr><td><pre>S31680</pre></td><td><pre>0.790</pre></td><td><pre>0.563</pre></td><td><pre>0.374</pre></td><td><pre>0.891</pre></td><td><pre>0.794</pre></td><td><pre>0.806</pre></td><td><pre>0.451</pre></td><td><pre>1.000</pre></td><td><pre>0.713</pre></td><td><pre>0.911</pre></td></tr>
+<tr><td><pre>S30686</pre></td><td><pre>0.949</pre></td><td><pre>0.191</pre></td><td><pre>0.006</pre></td><td><pre>0.874</pre></td><td><pre>0.832</pre></td><td><pre>0.827</pre></td><td><pre>0.084</pre></td><td><pre>0.713</pre></td><td><pre>1.000</pre></td><td><pre>0.742</pre></td></tr>
+<tr><td><pre>S30644</pre></td><td><pre>0.849</pre></td><td><pre>0.229</pre></td><td><pre>0.009</pre></td><td><pre>0.932</pre></td><td><pre>0.832</pre></td><td><pre>0.842</pre></td><td><pre>0.092</pre></td><td><pre>0.911</pre></td><td><pre>0.742</pre></td><td><pre>1.000</pre></td></tr>
+</table>
+</p>
+<br />
+<h3>e. 样本相对表达水平比较</h3>
+<br />
+<p>在同一组实验中，即使是相互比较的对照组与实验组之间，大部分基因的表达量还是应该保持一致的。当使用相对对数表达水平（Relative Log Expression(RLE)）的箱线图来控制不同组之间的实验质量时，箱线图应该在垂直中央相类的位置（通常接近0）。如果有一个样本的表现和其它的平行组都很不同，那说明它可能出现了质量问题。</p>
+<p><img src="./RLE_plot.png" height="450" width="550" /><a href="./RLE_plot.svg">SVG矢量图版本</a></p>
+<br />
+<h3>f. 样本聚类结果</h3>
+<br />
+<p>基于表达水平数据的样本聚类，计算样本间欧式距离，采用离差平方和法（wald法）进行层次聚类，验证聚类结果是否同实验设计基本一致。若聚类结果明显不一致，则样本间存在着明显的其他未知的因素，而不仅仅是实验处理效应。</p>
+<p><img src="./hcluster_hcluster.png" width="50%" /><a href="./hcluster_hcluster.svg">SVG矢量图版本</a></p>
+<br />
+<h3>g. 样本多维尺度分析</h3>
+<p>多维尺度分析(Multi Dimensional Scaling, MDS)是一种将多维空间的研究对象简化到低维空间进行定位、分析和归类，同时又保留对象间原始关系的数据分析方法。此处我们采用样本间欧式距离反映样本间的差异，选择前3个本征值最大的维度，绘制样本在前三个维度上的分布，若实验处理因素为表达差异的主要因素，则一般而言，样本组内差异应小于组间差异。</p>
+<p>前n个维度累积解释变异的百分比图(见下图)。其中，前三个维度，累积解释变异的百分比: 14.99%, 28.00%, 39.74%</p>
+<p><img src="./Variation_percentage.png" width="50%" /><a href="./Variation_percentage.svg">SVG矢量图版本</a></p>
+<br />
+<p>样本在前三个维度中的空间分布图</p>
+<p><img src="./MDS_samples_distribution.png" width="50%" /><a href="./MDS_samples_distribution.svg">SVG矢量图版本</a></p>
+<br />
+
+</body></html>

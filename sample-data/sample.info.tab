@@ -1,0 +1,12 @@
+##samples data list
+#SN	Files	name	class_id	classname
+S31612	31612RB_1.fq.gz,31612RB_2.fq.gz	S31612	1	control
+S29620	29620RB_1.fq.gz,29620RB_2.fq.gz	S29620	1	control
+S26146	26146RB_1.fq.gz,26146RB_2.fq.gz	S26146	1	control
+S30548	30548RB_1.fq.gz,30548RB_2.fq.gz	S30548	1	control
+S30956	30956RB_1.fq.gz,30956RB_2.fq.gz	S30956	1	control
+S31533	31533RB_1.fq.gz,31533RB_2.fq.gz	S31533	2	case
+S29615	29615RB_1.fq.gz,29615RB_2.fq.gz	S29615	2	case
+S31680	31680RB_1.fq.gz,31680RB_2.fq.gz	S31680	2	case
+S30686	30686RB_1.fq.gz,30686RB_2.fq.gz	S30686	2	case
+S30644	30644RB_1.fq.gz,30644RB_2.fq.gz	S30644	3	outline
